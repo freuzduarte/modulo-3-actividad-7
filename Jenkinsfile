@@ -54,7 +54,7 @@ pipeline {
      }
      post{
         always {
-             slackSend( channel: "#fundamentos-de-devops", color: "#00FFFF", message: "Construyendo la aplicacion ${env.JOB_NAME} ${BRANCH_NAME} ${JOB_NAME} (<${env.BUILD_URL}|Open>)", iconEmoji: '🥵')
+             slackSend( channel: "#fundamentos-de-devops", color: "#00FFFF", message: "Construyendo la aplicacion ${env.JOB_NAME} ${env.BRANCH_NAME} (<${env.BUILD_URL}|Open>)", iconEmoji: '🥵')
         }
         // success{
         //     slackSend( channel: "#fundamentos-de-devops", color: "#008f39", message: "Funcionando Perfectamente (<${env.BUILD_URL}|Open>)", iconEmoji: "🥵🥵")
