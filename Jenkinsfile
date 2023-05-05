@@ -4,7 +4,6 @@ pipeline {
         stage('Initialize'){
             steps{
                 echo "Esta es el inicio"
-                slackSend( channel: "#fundamentos-de-devops", color: "#00FFFF", message: "Construyendo la aplicacion ${env.JOB_NAME} ${env.BRANCH_NAME} (<${env.BUILD_URL}|Open>)", iconEmoji: '🥵')
             }
         }
         stage('Build') {
@@ -55,7 +54,7 @@ pipeline {
      }
      post{
         always {
-             slackSend( channel: "#fundamentos-de-devops", color: "#00FFFF", message: "Construyendo la aplicacion ${JOB_NAME} ${BRANCH_NAME} (<${BUILD_URL}|Open>)", iconEmoji: '🥵')
+             slackSend( channel: "#fundamentos-de-devops", color: "#00FFFF", message: "Construyendo la aplicacion (<${env.BUILD_URL}|Open>)", iconEmoji: '🥵', ${env.JOB_NAME}, ${env.BRANCH_NAME})
         }
         // success{
         //     slackSend( channel: "#fundamentos-de-devops", color: "#008f39", message: "Funcionando Perfectamente (<${env.BUILD_URL}|Open>)", iconEmoji: "🥵🥵")
