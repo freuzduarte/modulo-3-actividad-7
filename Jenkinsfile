@@ -44,10 +44,11 @@ pipeline {
 
                 // enviar mensaje a Slack con el resultado de cada etapa
                 slackSend(color: resultColor, message: 'Resultados de las etapas:')
-                
+
                 slackSend(channel: '@U05690FEL7P', message: 'Comenzando desde 0')
         //     slackSend( channel: '#fundamentos-de-devops', color: '#00FFFF',  message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${env.BUILD_USER}\n More info at: ${env.BUILD_URL} ${env.STAGE_NAME}")
         // }
         }
     }
+}
 }
