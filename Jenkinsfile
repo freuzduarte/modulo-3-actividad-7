@@ -25,7 +25,7 @@ pipeline {
             stage('Test') {
                 steps {
                     script {
-                        sh 'mvn clean verifyd'
+                        sh 'mvn clean verify'
                         if (currentBuild.result == 'FAILURE') {
                         slackSend(message: "Error al hacer test 🤡 ${env.JOB_NAME} ", color: '#CD5C5C')
                             }else {

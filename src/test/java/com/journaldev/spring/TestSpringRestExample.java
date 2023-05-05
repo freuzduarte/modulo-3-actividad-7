@@ -30,7 +30,7 @@ public class TestSpringRestExample {
 		List<LinkedHashMap> emps = restTemplate.getForObject(SERVER_URI+EmpRestURIConstants.GET_ALL_EMP, List.class);
 		System.out.println(emps.size());
 		for(LinkedHashMap map : emps){
-			System.out.println("ID="+map.get("id")+",Name="+map.get("name")+",CreatedDate="+map.get("createdDate"));;
+			System.out.println("ID="+map.get("id")+",Name="+map.get("name")+",CreatedDte="+map.get("createdDate"));;
 		}
 	}
 
