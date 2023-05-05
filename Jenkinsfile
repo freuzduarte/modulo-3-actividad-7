@@ -53,11 +53,13 @@ pipeline {
         //     } 
      }
      post{
-        success{
-            slackSend( channel: "#fundamentos-de-devops", color: "#FFF", message: "Funcionando Perfectamente")
-        }
-        failure{
-            slackSend( channel: "#fundamentos-de-devops", color: "#ff0000", message: "Fallando todo ${env.BUILD_ID}")
+        always {
+            success{
+                slackSend( channel: "#fundamentos-de-devops", color: "#008f39", message: "Funcionando Perfectamente (<${env.BUILD_URL}|Open>)")
+            }
+            failure{
+                slackSend( channel: "#fundamentos-de-devops", color: "#ff0000", message: "Fallando todo (<${env.BUILD_URL}|Open>)")
+            } 
         }
     }
 }
