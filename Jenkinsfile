@@ -42,7 +42,7 @@ pipeline {
                 echo 'Prueba'
 
                 if (currentBuild.result == 'FAILURE') {
-                    slackSend(channel: '@U05690FEL7P', message: "Finalizado*${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME}", color: '#00DA0A')
+                    slackSend(channel: '@U05690FEL7P', message: "Finalizado*${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME}", color: '#CD5C5C')
                 }
                 if (currentBuild.result == 'SUCCESS') {
                     slackSend(channel: '@U05690FEL7P', message: "Error al Crear el proyecto *${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME}", color: '#FF0017')
