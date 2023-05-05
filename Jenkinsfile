@@ -12,11 +12,6 @@ pipeline {
                 steps {
                     script {
                         sh 'mvn -B package'
-                    if (currentBuild.result == 'SUCCESS') {
-                        slackSend message: 'Compleado'
-                        } else {
-                        slackSend message: 'Fallido'
-                    }
                     }
                 }
             }
@@ -32,7 +27,7 @@ pipeline {
         always {
             script {
                 echo 'I will always say Hello again!'
-                slackSend(channel: '@U05690FEL7P', message: 'Comenzando desde 0')
+                slackSend(channel: '@U05690FEL7P', message: 'Comenzando desde 0, ${env.JOB_NAME}')
             }
         }
     }
