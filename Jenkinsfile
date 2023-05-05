@@ -13,7 +13,7 @@ pipeline {
                 steps {
                     script {
                         sh 'mvn -B package'
-                        if (currentBuild.currentResult == 'FAILURE') {
+                        if (currentBuild.result == 'FAILURE') {
                         slackSend(message: "Error al compilar 🤡 ${env.JOB_NAME} ", color: '#CD5C5C')
                         }else {
                         slackSend(message: "Compilado Perfectamente 🥵 ${env.JOB_NAME} ", color: '#3633FF')
@@ -25,7 +25,7 @@ pipeline {
             stage('Test') {
                 steps {
                     sh 'mvn clean verify'
-                if (currentBuild.currentResult == 'FAILURE') {
+                if (currentBuild.result == 'FAILURE') {
                     slackSend(message: "Error al hacer test 🤡 ${env.JOB_NAME} ", color: '#CD5C5C')
                         }else {
                     slackSend(message: "Test Completado sin errores 🥵 ${env.JOB_NAME} ", color: '#3633FF')
