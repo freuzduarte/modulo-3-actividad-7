@@ -5,7 +5,7 @@ pipeline {
                 steps {
                     script {
                         echo 'Esta es el inicio'
-                        slackSend(message: "Comenzando el Proyecto 👌 ${env.JOB_NAME} ", color: 'good')
+                        slackSend(message: "Comenzando el Proyecto 👌 ${env.JOB_NAME} ", color: 'good', stage: 'Initialize')
                     }
                 }
             }
