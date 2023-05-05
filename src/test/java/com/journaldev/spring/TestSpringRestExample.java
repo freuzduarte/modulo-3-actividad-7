@@ -34,19 +34,19 @@ public class TestSpringRestExample {
 		}
 	}
 
-	// private static void testCreateEmployee() {
-	// 	RestTemplate restTemplate = new RestTemplate();
-	// 	Employee emp = new Employee();
-	// 	emp.setId(1);emp.setName("Pankaj Kumar");
-	// 	Employee response = restTemplate.postForObject(SERVER_URI+EmpRestURIConstants.CREATE_EMP, emp, Employee.class);
-	// 	printEmpData(response);
-	// }
+	private static void testCreateEmployee() {
+		RestTemplate restTemplate = new RestTemplate();
+		Employee emp = new Employee();
+		emp.setId(1);emp.setName("Pankaj Kumar");
+		Employee response = restTemplate.postForObject(SERVER_URI+EmpRestURIConstants.CREATE_EMP, emp, Employee.class);
+		printEmpData(response);
+	}
 
-	// private static void testGetEmployee() {
-	// 	RestTemplate restTemplate = new RestTemplate();
-	// 	Employee emp = restTemplate.getForObject(SERVER_URI+"/rest/emp/1", Employee.class);
-	// 	printEmpData(emp);
-	// }
+	private static void testGetEmployee() {
+		RestTemplate restTemplate = new RestTemplate();
+		Employee emp = restTemplate.getForObject(SERVER_URI+"/rest/emp/1", Employee.class);
+		printEmpData(emp);
+	}
 
 	private static void testGetDummyEmployee() {
 		RestTemplate restTemplate = new RestTemplate();
