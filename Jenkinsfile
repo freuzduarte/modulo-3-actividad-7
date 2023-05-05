@@ -15,7 +15,7 @@ pipeline {
                         sh 'mvn -B package'
                         if (currentBuild.result == 'FAILURE') {
                         slackSend(message: "Error al compilar 🤡 ${env.JOB_NAME} ", color: '#CD5C5C')
-                        }else {
+                        }else if(currentBuild.result == 'SUCCESS') {
                         slackSend(message: "Compilado Perfectamente 🥵 ${env.JOB_NAME} ", color: '#3633FF')
                         }
                     }
@@ -28,7 +28,7 @@ pipeline {
                         sh 'mvn clean verify'
                         if (currentBuild.result == 'FAILURE') {
                         slackSend(message: "Error al hacer test 🤡 ${env.JOB_NAME} ", color: '#CD5C5C')
-                            }else {
+                        }else if (currentBuild.result == 'SUCCESS'){
                         slackSend(message: "Test Completado sin errores 🥵 ${env.JOB_NAME} ", color: '#3633FF')
                         }
                     }
@@ -42,7 +42,7 @@ pipeline {
                 echo 'Prueba'
 
                 if (currentBuild.result == 'SUCCESS') {
-                    slackSend(channel: '@U05690FEL7P', message: "Finalizado*${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME}", color: '#1B00FF')
+                    slackSend(channel: '@U05690FEL7P', message: "Finalizado Correctamente *${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME}", color: '#00FF04')
                 }else if (currentBuild.result == 'FAILURE') {
                     slackSend(channel: '@U05690FEL7P', message: "Error al Crear el proyecto *${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME}", color: '#FF0000')
                 }
