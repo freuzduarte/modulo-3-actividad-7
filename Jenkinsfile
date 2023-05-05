@@ -30,7 +30,7 @@ pipeline {
         always {
             script {
                 echo 'I will always say Hello again!'
-                slackSend(channel: '@U05690FEL7P', message: 'Comenzando desde 0, *${currentBuild.currentResult}:* Job ${HOLA}')
+                slackSend(channel: '@U05690FEL7P', message: 'Comenzando desde 0, *${currentBuild.currentResult}:* Job $HOLA')
             }
         }
     }
