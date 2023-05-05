@@ -28,7 +28,7 @@ pipeline {
         always {
             script {
                 echo 'I will always say Hello again!'
-                slackSend(channel: '#fundamentos-de-devops', message: 'Comenzando desde 0')
+                slackSend(channel: '@Uzcategui', message: 'Comenzando desde 0')
         //     slackSend( channel: '#fundamentos-de-devops', color: '#00FFFF',  message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${env.BUILD_USER}\n More info at: ${env.BUILD_URL} ${env.STAGE_NAME}")
         // }
         }
