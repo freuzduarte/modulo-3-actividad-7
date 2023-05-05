@@ -25,7 +25,7 @@ pipeline {
             stage('Test') {
                 steps {
                     script {
-                        sh 'mvn clean verify'
+                        sh 'mvn clean verifyd'
                         if (currentBuild.result == 'FAILURE') {
                         slackSend(message: "Error al hacer test 🤡 ${env.JOB_NAME} ", color: '#CD5C5C')
                             }else {
@@ -40,7 +40,10 @@ pipeline {
         always {
             script {
                 echo 'Prueba'
-                slackSend(channel: '@U05690FEL7P', message: "Comenzando *${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME}", color: '#00FC0B ')
+
+                if()
+
+                slackSend(channel: '@U05690FEL7P', message: "Finalizado*${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME}", color: '#00FC0B')
             }
         }
     }
