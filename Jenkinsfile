@@ -4,11 +4,32 @@ pipeline {
         stage('Initialize') {
             steps {
                 echo 'Esta es el inicio'
+                 script {
+                    try {
+                        // hacer algo que pueda fallar
+                        sh 'echo "La Primera Etapa ha sido completada exitosamente"'
+                    } catch (Exception e) {
+                        // si algo falla, se registra el error
+                        currentBuild.result = 'FAILURE'
+                        error "La Primera Etapa ha fallado: ${e.getMessage()}"
+                    }
+                }
             }
         }
         stage('Build') {
             steps {
-                sh 'mvn -B package'
+                
+                script {
+                    try {
+                        // hacer algo que pueda fallar
+                        sh 'echo "La Segunda Etapa ha sido completada exitosamente"'
+                        sh 'mvn -B package'
+                    } catch (Exception e) {
+                        // si algo falla, se registra el error
+                        currentBuild.result = 'FAILURE'
+                        error "La Segunda Etapa ha fallado: ${e.getMessage()}"
+                    }
+                }
             }
         }
 
