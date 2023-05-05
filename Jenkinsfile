@@ -5,17 +5,19 @@ pipeline {
                 steps {
                     script {
                         echo 'Esta es el inicio'
-                        if (currentBuild.result == 'SUCCESS') {
-                        slackSend message: 'Compleado'
-                        } else {
-                        slackSend message: 'Fallido'
-                        }
                     }
                 }
             }
             stage('Build') {
                 steps {
-                    sh 'mvn -B package'
+                    script {
+                        sh 'mvn -B package'
+                    if (currentBuild.result == 'SUCCESS') {
+                        slackSend message: 'Compleado'
+                        } else {
+                        slackSend message: 'Fallido'
+                    }
+                    }
                 }
             }
 
