@@ -8,18 +8,19 @@ pipeline {
                 steps {
                     script {
                         echo 'Esta es el inicio'
+                        success{
+                            slackSend message: "Comenzando el Proyecto"
+                        }
+                        failure{
+                            slackSend message: "Proyecto Fallido"
+                        }
                     }
                 }
             }
             stage('Build') {
                 steps {
                     script {
-                        sh 'mvn -B packaget'
-                        if(currentBuild.currentResult == 'SUCCESS'){
-                            slackSend message: "Build Completado"
-                        }else{
-                            slackSend message: "No completado"
-                        }
+                        sh 'mvn -B package'
                     }
                 }
             }
