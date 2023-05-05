@@ -52,4 +52,12 @@ pipeline {
         
             } 
      }
+     post{
+        success{
+            slackSend( channel: "#fundamentos-de-devops", color: "#FFF", message: "Funcionando Perfectamente")
+        }
+        failure{
+            slackSend( channel: "#fundamentos-de-devops", color: "#ff0000", message: "Fallando todo ${env.BUILD_ID}")
+        }
+    }
 }
