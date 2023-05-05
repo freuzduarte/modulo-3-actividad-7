@@ -17,14 +17,12 @@ pipeline {
                 sh 'mvn clean verify'
             }
         }
-
         }
 
     post {
         always {
             script {
                 echo 'I will always say Hello again!'
-
 
                 def resultColor
                 def resultMessage
@@ -38,7 +36,6 @@ pipeline {
                     resultMessage = 'El pipeline ha fallado'
                 }
 
-                
                 // enviar mensaje a Slack con el resultado del pipeline
                 slackSend(color: resultColor, message: resultMessage)
 
@@ -46,6 +43,21 @@ pipeline {
                 slackSend(color: resultColor, message: 'Resultados de las etapas:')
 
                 slackSend(channel: '@U05690FEL7P', message: 'Comenzando desde 0')
+
+                for (stage in pipeline.stages) {
+                    def stageResultColor
+                    def stageResultMessage
+
+                    if (stage.state.result == 'SUCCESS') {
+                        stageResultColor = '#36a64f'
+                        stageResultMessage = "La etapa ${stage.name} ha sido completada exitosamente"
+                    } else {
+                        stageResultColor = '#FF0000'
+                        stageResultMessage = "La etapa ${stage.name} ha fallado"
+                    }
+
+                    slackSend(color: stageResultColor, message: stageResultMessage)
+                }
         //     slackSend( channel: '#fundamentos-de-devops', color: '#00FFFF',  message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${env.BUILD_USER}\n More info at: ${env.BUILD_URL} ${env.STAGE_NAME}")
         // }
         }
