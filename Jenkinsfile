@@ -1,22 +1,29 @@
 pipeline {
     agent any
         stages {
-        stage('Initialize') {
-            steps {
-                echo 'Esta es el inicio'
+            stage('Initialize') {
+                steps {
+                    script {
+                        echo 'Esta es el inicio'
+                        if (currentBuild.result == 'SUCCESS') {
+                        slackSend message: 'Compleado'
+                        } else {
+                        slackSend message: 'Fallido'
+                        }
+                    }
+                }
             }
-        }
-        stage('Build') {
-            steps {
-                sh 'mvn -B package'
+            stage('Build') {
+                steps {
+                    sh 'mvn -B package'
+                }
             }
-        }
 
-        stage('Test') {
-            steps {
-                sh 'mvn clean verify'
+            stage('Test') {
+                steps {
+                    sh 'mvn clean verify'
+                }
             }
-        }
         }
 
     post {
@@ -24,7 +31,6 @@ pipeline {
             script {
                 echo 'I will always say Hello again!'
                 slackSend(channel: '@U05690FEL7P', message: 'Comenzando desde 0')
-            //     slackSend( channel: '#fundamentos-de-devops', color: '#00FFFF',  message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${env.BUILD_USER}\n More info at: ${env.BUILD_URL} ${env.STAGE_NAME}")
             }
         }
     }
