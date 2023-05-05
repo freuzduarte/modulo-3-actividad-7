@@ -14,7 +14,7 @@ pipeline {
             stage('Build') {
                 steps {
                     script {
-                        sh 'mvn -B package'
+                        sh 'mvn -B packaget'
                         if(currentBuild.currentResult == 'SUCCESS'){
                             slackSend message: "Build Completado"
                         }else{
