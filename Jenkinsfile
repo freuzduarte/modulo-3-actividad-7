@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    enviroment {
+    environment {
         CHANNEL = '#fundamentos-de-devops'
         CREDENTIAL = '5BfpwafwIgIZDXA11OU7iIy3'
         GROUP = 'sustantivagrupo'
