@@ -54,13 +54,13 @@ pipeline {
      }
      post{
         always {
-             slackSend( channel: "#fundamentos-de-devops", color: "#00FFFF",  message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${BUILD_USER}\n More info at: ${env.BUILD_URL}", iconEmoji: "🥵")
+             slackSend( channel: "#fundamentos-de-devops", color: "#00FFFF",  message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} by ${env.BUILD_USER}\n More info at: ${env.BUILD_URL}", iconEmoji: "🥵")
         }
-        // success{
-        //     slackSend( channel: "#fundamentos-de-devops", color: "#008f39", message: "Funcionando Perfectamente (<${env.BUILD_URL}|Open>)", iconEmoji: "🥵🥵")
-        // }
-        // failure{
-        //     slackSend( channel: "#fundamentos-de-devops", color: "#ff0000", message: "Fallando todo (<${env.BUILD_URL}|Open>)", iconEmoji: "🤡💀")
-        // } 
+        success{
+            slackSend( channel: "#fundamentos-de-devops", color: "#008f39", message: "Funcionando Perfectamente (<${env.BUILD_URL}|Open>)", iconEmoji: "🥵🥵")
+        }
+        failure{
+            slackSend( channel: "#fundamentos-de-devops", color: "#ff0000", message: "Fallando todo (<${env.BUILD_URL}|Open>)", iconEmoji: "🤡💀")
+        } 
     }
 }
