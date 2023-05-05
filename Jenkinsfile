@@ -44,7 +44,7 @@ pipeline {
                 if (currentBuild.result == 'SUCCESS') {
                     slackSend(channel: '@U05690FEL7P', message: "Error al Crear el proyecto *${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME}", color: '#FF0000')
                 }else if (currentBuild.result == 'FAILURE') {
-                    slackSend(channel: '@U05690FEL7P', message: "Finalizado Correctamente *${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME}", color: '#00FF04')
+                    slackSend(channel: '@U05690FEL7P', message: "No Finalizado*${currentBuild.currentResult}:* build ${env.BUILD_NUMBER}, ${env.JOB_NAME}", color: '#00FF04')
                 }
             }
         }
