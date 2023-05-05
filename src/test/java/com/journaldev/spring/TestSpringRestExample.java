@@ -30,16 +30,16 @@ public class TestSpringRestExample {
 		List<LinkedHashMap> emps = restTemplate.getForObject(SERVER_URI+EmpRestURIConstants.GET_ALL_EMP, List.class);
 		System.out.println(emps.size());
 		for(LinkedHashMap map : emps){
-			System.out.println("ID="+map.get("id")+",Name="+map.get("name")+",CreatedDte="+map.get("createdDate"));;
+			System.out.println("ID="+map.get("id")+",Name="+map.get("name")+",CreatedDate="+map.get("createdDate"));;
 		}
 	}
 
-	private static void testCreateEmployee() {
-		RestTemplate restTemplate = new RestTemplate();
-		Employee emp = new Employee();
-		emp.setId(1);emp.setName("Pankaj Kumar");
-		Employee response = restTemplate.postForObject(SERVER_URI+EmpRestURIConstants.CREATE_EMP, emp, Employee.class);
-		printEmpData(response);
+	// private static void testCreateEmployee() {
+	// 	RestTemplate restTemplate = new RestTemplate();
+	// 	Employee emp = new Employee();
+	// 	emp.setId(1);emp.setName("Pankaj Kumar");
+	// 	Employee response = restTemplate.postForObject(SERVER_URI+EmpRestURIConstants.CREATE_EMP, emp, Employee.class);
+	// 	printEmpData(response);
 	}
 
 	private static void testGetEmployee() {
