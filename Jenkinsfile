@@ -35,7 +35,7 @@ pipeline {
                             nexusUrl: "192.168.26.129:8081",
                             groupId: pom.groupId,
                             version: pom.version,
-                            repository: "m3pj6",
+                            repository: "maven-releases",
                             credentialsId: "admin",
                             artifacts: [
                                 [artifactId: pom.artifactId,
