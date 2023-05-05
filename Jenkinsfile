@@ -4,6 +4,7 @@ pipeline {
         stage('Initialize'){
             steps{
                 echo "Esta es el inicio"
+                slackSend( channel: "#fundamentos-de-devops", color: "#00FFFF", message: "Construyendo la aplicacion ${env.JOB_NAME} ${env.BRANCH_NAME} (<${env.BUILD_URL}|Open>)", iconEmoji: '🥵')
             }
         }
         stage('Build') {
