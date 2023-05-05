@@ -15,7 +15,7 @@ pipeline {
                         sh 'mvn -B package'
                         if (currentBuild.result == 'FAILURE') {
                         slackSend(message: "Error al compilar 🤡 ${env.JOB_NAME} ", color: '#CD5C5C')
-                        }else if(currentBuild.result == 'SUCCESS') {
+                        }else{
                         slackSend(message: "Compilado Perfectamente 🥵 ${env.JOB_NAME} ", color: '#3633FF')
                         }
                     }
